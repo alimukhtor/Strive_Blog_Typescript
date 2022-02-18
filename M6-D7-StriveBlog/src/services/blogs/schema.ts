@@ -2,6 +2,10 @@ import mongoose from 'mongoose'
 
 const { Schema, model } = mongoose
 
+interface IBlogs{
+    
+}
+
 const blogSchema = new Schema({
     category:{type:String, required:true},
     title:{type:String, required:true},

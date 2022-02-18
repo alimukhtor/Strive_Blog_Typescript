@@ -1,14 +1,17 @@
-import mongoose from 'mongoose'
+import mongoose, { Model } from 'mongoose'
 const {Schema, model} = mongoose
 import bcrypt from 'bcrypt'
+//import { IAuthor } from '../types/authorType'
 
-const AuthorSchema = new Schema({
+
+const AuthorSchema = new Schema<IAuthor, IAuthorModel>({
     first_name:{type:String},
     last_name:{type:String},
     email:{type:String, required:true},
     password:{type:String},
     role:{type:String, enum:["Admin", "User"]},
-    googleId:{type:String}
+    googleId:{type:String},
+   
    
 },{timestamps:true})
 
@@ -44,5 +47,10 @@ AuthorSchema.statics.checkCredentials = async function(email, plainPassword){
     }
 }  
 
+interface IAuthorModel extends Model<IAuthor & Document> {
+    checkCredentials(email: string, plainPassword: string): Promise<IAuthor & Document | null>
+}
 
-export default model("Authors", AuthorSchema)
+const AuthorModel = model<IAuthor, IAuthorModel>("Authors", AuthorSchema)
+
+export default AuthorModel

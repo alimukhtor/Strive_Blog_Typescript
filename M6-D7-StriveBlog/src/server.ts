@@ -4,14 +4,13 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import passport from 'passport'
 import { unauthorizedHandler, forbiddenHandler, catchAllHandler } from './services/errorHandlers.js'
-Zxadasfs
-import googleStrategy from './services/userAuth/oauth.js'
+import googleStrategy from './services/userAuth/oauth'
 const server = express()
 const port = process.env.PORT || 3001
 
-import blogRouter from '../src/services/blogs/blog.js'
-import authorRouter from './services/authors/index.js'
-import likesRouter from './services/likes/index.js'
+// import blogRouter from '../src/services/blogs/blog.js'
+import authorRouter from './services/authors/index'
+// import likesRouter from './services/likes/index.js'
 
 // ************************************* MIDDLEWARES *****************************
 passport.use(googleStrategy)
@@ -22,9 +21,9 @@ server.use(passport.initialize())
 
 
 // *************************************** ROUTES ********************************
-server.use("/blogs", blogRouter)
+// server.use("/blogs", blogRouter)
 server.use("/authors", authorRouter)
-server.use("/likes", likesRouter)
+// server.use("/likes", likesRouter)
 // ****************************** ERROR HANDLERS **************************
 
 // server.use(unauthorizedHandler)
