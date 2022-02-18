@@ -1,12 +1,9 @@
 import mongoose from 'mongoose'
 
 const { Schema, model } = mongoose
+import { IBlogs } from '../types/blogTypes'
 
-interface IBlogs{
-    
-}
-
-const blogSchema = new Schema({
+const blogSchema = new Schema<IBlogs>({
     category:{type:String, required:true},
     title:{type:String, required:true},
     cover:{type:String, required:true},
