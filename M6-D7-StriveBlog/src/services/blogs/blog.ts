@@ -1,11 +1,11 @@
 import express from 'express'
 import q2m from "query-to-mongo"
 import BlogsModel from './schema'
-// import {userAuth} from '../userAuth/userAuth.js'
-// import { userOnlyMiddleware } from "../userAuth/user.js";
+import {userAuth} from '../userAuth/userAuth'
+import { userOnlyMiddleware } from "../userAuth/user";
 import { JWTAuthMiddleware } from '../userAuth/token';
 import { IBlogs, IComment } from '../types/blogTypes';
-import { createError } from 'http-errors';
+import createHttpError from 'http-errors';
 const blogRouter = express.Router()
 
 blogRouter.post("/", async(req, res, next)=> {
@@ -157,3 +157,7 @@ blogRouter.delete("/:blogId/comments/:commentId", async(req, res, next)=> {
 
 
 export default blogRouter
+
+function createError(arg0: number, arg1: string): any {
+    throw new Error('Function not implemented.');
+}

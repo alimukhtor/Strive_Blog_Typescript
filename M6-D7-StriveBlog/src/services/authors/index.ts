@@ -1,8 +1,7 @@
 import express from "express";
 import AuthorsModel from "./schema";
-// import {userAuth} from '../userAuth/userAuth.js'
-// import { userOnlyMiddleware } from "../userAuth/user.js";
-//import { IAuthor } from "../types/authorType";
+import {userAuth} from '../userAuth/userAuth.js'
+import { userOnlyMiddleware } from "../userAuth/user.js";
 import createHttpError from "http-errors";
 import { JWTAuthenticate } from "../userAuth/tools";
 import { JWTAuthMiddleware } from "../userAuth/token";
